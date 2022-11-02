@@ -18,8 +18,16 @@ while True:
     #cadd below is the client process address
     cmsg, cadd = server_socket.recvfrom(2048)
     cmsg = cmsg.decode()
+    client_port = cadd[1] #accessing the client's port number from the tupple data type CADD
+    if (client_port == 11000):
+        print("Client 1: " + cmsg)
+    elif (client_port == 13000):
+        print("Client 2: " + cmsg)
+    else:
+        print("External Client:", cadd, ":" + cmsg)    
+
     if(cmsg.isalnum()==False):
-        cmsg = "Not alphanumeric."
+        cmsg = "Not Alphanumeric."
     else:
         cmsg = "Alphanumeric."
 
